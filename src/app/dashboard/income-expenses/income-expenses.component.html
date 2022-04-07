@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Agregar Ingreso / Gasto</h4>
+        <p class="card-description">Especifique el monto y el tipo</p>
+
+        <form [formGroup]="incomeForm" (ngSubmit)="save()">
+          <div class="form-group">
+            <label>Descripción</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Descripción"
+              name="descripcion"
+              formControlName="description"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Monto</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Monto"
+              name="monto"
+              formControlName="amount"
+            />
+            <p>Debe de ser un monto positivo</p>
+          </div>
+
+          <div class="form-group">
+            <label>Tipo</label>
+            <br />
+            <button *ngIf="type==='ingreso'" (click)="type='gasto'" type="button" class="btn btn-primary btn-block">
+              Ingreso
+            </button>
+            <button *ngIf="type==='gasto'" (click)="type='ingreso'" type="button" class="btn btn-warning btn-block">Gasto</button>
+          </div>
+
+          <hr />
+          <button
+          *ngIf="!isLoading"
+          [disabled]="incomeForm.invalid" type="submit" class="btn btn-success mr-2">
+            <i class="fa fa-save"></i>
+            Agregar
+          </button>
+          <button
+          *ngIf="isLoading"
+          [disabled]="true" type="submit" class="btn btn-success mr-2">
+            <i class="fa fa-spin fa-sync"></i>
+            Espere...
+          </button>
+
+          <button type="reset" class="btn btn-light">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
