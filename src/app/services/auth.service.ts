@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable, Subscription } from 'rxjs';
+
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 import { Store } from '@ngrx/store';
 import { setUser, unsetUser } from '../store/actions/auth.actions';
 import { AppState } from '../store/app.reducer';

@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyAr3fFonJZltqEK8_0PKwvoZZ9NOeUDJgk',
-    authDomain: 'income-expenses-ng.firebaseapp.com',
-    projectId: 'income-expenses-ng',
-    storageBucket: 'income-expenses-ng.appspot.com',
-    messagingSenderId: '129241376965',
-    appId: '1:129241376965:web:a2f4319d08185867b668ac',
-    locationId: 'us-central',
+    projectId: '',
+    appId: '',
+    storageBucket: '',
+    locationId: '',
+    apiKey: '',
+    authDomain: '¿',
+    messagingSenderId: '',
   },
 };
 

@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 
 // Firebase
 import { environment } from '../environments/environment';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire/compat';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 
 // NgRx
 import { StoreModule } from '@ngrx/store';
@@ -23,9 +24,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    provideAuth(() => getAuth()),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
@@ -33,7 +34,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       autoPause: true,
     }),
   ],
-  providers: [],
+  providers: [ { provide: FIREBASE_OPTIONS, useValue: environment.firebase } ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
